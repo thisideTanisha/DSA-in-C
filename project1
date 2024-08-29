@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include<stdlib.h>
+
+   void inputarray (int (*a)[3]){
+    int i,j;
+    for(i=0;i<3;i++){
+        for(j=0;j<3;j++){
+            a[i][j]=rand()%100;
+        }
+    }
+   }
+   void printarray(int(*a)[3]){
+    int i,j;
+    for(i=0;i<3;i++){
+        for(j=0;j<3;j++){
+            printf("\t%d",a[i][j]);
+            }
+            printf("\n");
+        }  
+   }
+   void matproduct(int(*a)[3],int(*b)[3],int(*r)[3]){
+    int i,j,k;
+    for(i=0;i<3;i++){
+        for(j=0;j<3;j++){
+            r[i][j]=0;
+            for(k=0;k<3;k++){
+                r[i][j]=r[i][j]+a[i][k]*b[k][j];
+            }
+        }
+    }
+   }
+   int main(){
+    int arr1[3][3],arr2[3][3],res[3][3];
+    inputarray(arr1);
+    printf("\nMatrix 1..\n");
+    printarray(arr1);
+    inputarray(arr2);
+    printf("\nMatrix 2..\n");
+    printarray(arr2);
+    matproduct(arr1,arr2,res);
+    printf("\nresult is..\n");
+    printarray(res);
+       }
